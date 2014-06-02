@@ -33,29 +33,34 @@ public class verwaltung {
     }
   
   public static String welcher_kunde (int Flugzeug[][], String Kunde[]) {
-    int wahl = 0, id = 0;
-    String strid;
-    String Name:
+    int wahl = 0, id_int = 0;
+    String id = "";
+    String strid = "";
+    String name = "";
     String menu[] = {"Namen zur ID"," ID zu Namen"};
     wahl = menukontrolle.auswahl_ohne_back(menu);
     switch (wahl) {
       case  1:
       System.out.print("Welche ID:");
-      id = Tastatur.liesInt();
-      if (id <= Kunde.length * 2) {
-        name = suchen.get_id(Kunde, id);
+      id_int = Tastatur.liesInt();
+      if (id_int <= Kunde.length * 2) {
+        name = suchen.get_id(Kunde, id_int);
         System.out.println("Name: " + name); 
       } else {
         Kunde = verwaltung.kundendaten(Kunde);
-        id = 0;
-        strid = suchen.get_id(Kunde, id);
-        id = Integer.valueOf(strid);
+        id_int = 0;
+        id = suchen.get_id(Kunde, id_int);
+        
+        System.out.println("ID: " + id);
+        
         
       } // end of if-else
       
         break;
       case  2:
-      
+      id_int = 1000;
+      id = suchen.get_id(Kunde, id_int);
+      System.out.println("ID: "+ id);
         break;
       default:
       
@@ -63,14 +68,14 @@ public class verwaltung {
     return id;  
     }
     
-  }
   
   
-  public static int[] buchen ( int Flugzeug[][], String kunde[] ) {  
+  
+  /*public static int[] buchen ( int Flugzeug[][], String kunde[] ) {  
     
       
   }                               
-  /*public static String[] buchen (Flugzeug[], Kunde[]) {
+  public static String[] buchen (Flugzeug[], Kunde[]) {
     
     
     
@@ -83,5 +88,5 @@ public class verwaltung {
   public static void main(String[] args) {
     
   } // end of main
-  
-} // end of class verwaltung
+ } 
+ // end of class verwaltung

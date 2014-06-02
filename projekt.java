@@ -33,8 +33,7 @@ public class projekt {
         String sub1[] = {"Flugzeug", "Zeit", "Eigenschaften"}; 
         //Flugzeug: Kunde möchte Flugzeug "Rosa" unabhängig vom Zeitpunkt, also wird für Flugzeig X an einem speziellen Datum  gesucht
         //Namen ausdenken: g 
-        //Freddy Teil + lesen/speichern                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-        
+        //Freddy Teil + lesen/speichern                                                                                                                                                                                      
         //Zeit: egal welches Flugzeug, Kunde möchte zu einem bestimmten Zeitpunkt wissen ob ein Flugzeug frei ist
         subwahl = menukontrolle.submenu(sub1); 
         switch (subwahl) {
@@ -63,7 +62,7 @@ public class projekt {
         // Storno: einfach abfrage nach wann er stornieren möchte, kundenid wird in array an der Stelle durch eine Null ersetzt
         
         
-    
+
         
         
         
