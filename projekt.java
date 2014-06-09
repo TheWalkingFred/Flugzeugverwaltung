@@ -11,17 +11,22 @@ public class projekt {
   
   public static void main(String[] args) {
     
+    
+    
     int FlugANZ = 4, stunden = 24, Kundenanz = 1;
     int Flugzeug[][] = new int[FlugANZ][stunden];
-    String Kunde[] = new String[Kundenanz];    
+    String Kunde[] = new String[Kundenanz];
     Kunde[0] = "Null";
-    Kunde = RWData.laden();
     // Erst Initialisieren, dann Dateilesen und in Arrays schreiben  oder automatisch befüllen
+    //RWData daten = new RWData();
+    //Kunde = daten.laden();
     
     int wahl = 0;
     int subwahl = 0;
     String menu[] = {"Suchen", "Kundenverwaltung/ Buchung", "Statistiken"};
     do {
+      
+      System.out.println();
       wahl = menukontrolle.menu_end_hauptprogramm(menu);
       menukontrolle.leer();
       
@@ -45,6 +50,7 @@ public class projekt {
         } // end of switch
         break;
         
+        
         // offenes Thema
         case  2:
         String sub2[] = {"Reservierung", "Storno", "Umbuchung", "Kunde anlegen"};
@@ -57,52 +63,111 @@ public class projekt {
         
         // Storno: einfach abfrage nach wann er stornieren möchte, kundenid wird in array an der Stelle durch eine Null ersetzt
         
+        
+        
+        
+        
+        
+        int id_int = 0;
+        String id = "";
+        
+        
+        
+        
         //Umbuchung: modul abfrage, modul storno, modul reservierung
         switch (subwahl) {
           case  1:
+          boolean kunde_exist = true;
+          id_int = 0;
+          id = "";
+          id = verwaltung.welcher_kunde(Kunde);
+          id_int = Integer.valueOf(id);
+          kunde_exist = verwaltung.kunde_exist(Kunde, kunde_exist, id_int);
+          if (kunde_exist == false) {
+            Kunde = verwaltung.kundendaten(Kunde);
+            //daten.schreiben(Kunde);
+            id_int = 0;
+            id = suchen.get_id(Kunde, id_int);
+            System.out.println("ID: " + id);
+            id_int = Integer.valueOf(id);
+          }
           
-          //Flugzeug = verwaltung.buchen(Flugzeug, Kunde);
+          Flugzeug = verwaltung.buchen(Flugzeug, Kunde, id_int);
           break;
           case  2:
-          //Flugzeug = verwaltung.storno(Flugzeug, Kunde);
+          id_int = 0;
+          id = "";
+          
+          System.out.print("Welcher Kunde (ID):");
+          id_int = Tastatur.liesInt();
+          if (id_int < 0 || id_int > Kunde.length / 2) {
+            System.out.println("Kunde nicht vorhanden!!!");
+            break;  
+          } // end of if
+          
+          
+          id = suchen.get_id(Kunde, id_int); 
+          Flugzeug = verwaltung.storno(Flugzeug, id_int);
+          
           break;
           case  3:
-          //Flugzeug = verwaltung.umbuchen(Flugzeug, Kunde);
+          id_int = 0;
+          id = "";
+          
+          System.out.print("Welcher Kunde (ID):");
+          id_int = Tastatur.liesInt();
+          if (id_int < 0 || id_int > Kunde.length / 2) {
+            System.out.println("Kunde nicht vorhanden!!!");
+            break;  
+          } // end of if
+          
+          
+          id = suchen.get_id(Kunde, id_int); 
+          Flugzeug = verwaltung.umbuchen(Flugzeug, id_int);
           break;
           case  4: 
           Kunde = verwaltung.kundendaten(Kunde);
-          RWData.schreiben(Kunde); 
+          // 
           break;  
           default:
           
         }
         
+        
         break;
         
         case  3:
-        String sub3[] = {"Auslastung nach Flugzeugen", "Auslastung nach Zeit"}; 
+        String sub3[] = {"Vorraussichtlichte Einnahmen", "Statistische Auslastungen"}; 
         subwahl = menukontrolle.submenu(sub3);
         switch (subwahl) {
           case  1: 
-          
+          statistikneu.einnahmen(flugzeug, kunde);
           break;
           case  2: 
-          
+          //statistikneu.auslastungen(flugzeug, kunde);
           break;
           default: 
           
-        } // end of switch
+        } // end of switch*/
+        //statistik.auslastung();
         break;  
         default: 
         
       } // end of switch
       
-    } while (wahl < menu.length); // end of do-while// end of while
+      
+      
+      
+      
+    } while (wahl <= menu.length); // end of do-while// end of while
     
     //Datei speichern
     
-  } // end of main  
+    
+  } // end of main
+  
 } // end of class projekt
+
 
 //modul buchen(Kunde,Flugzeug) ---> submenu zur auswahl, gibt id zurück, zwischen idsuche nach namen oder id ---->  
 
