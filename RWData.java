@@ -7,13 +7,14 @@
   */
 import java.io.*;
 public class RWData {
+  //FileWriter operation;
+  //File datei;
   
-  FileWriter operation;
-  File datei;
   //Schreibt letzten angelegten Kunden in eine Datei mit der ID als Namen (ID.txt)
-  public void schreiben(String kunde[]){
+  public static void schreiben(String kunde[]){
+    FileWriter operation;
+    File datei;
     String id = suchen.idzahl(kunde, 0);
-    int intid = Integer.valueOf(id);
     String pfad = ("C:\\projects\\Flugzeugverwaltung\\Kunden\\" + id + ".txt");
     datei = new File(pfad);
     
@@ -36,17 +37,23 @@ public class RWData {
   
   
   //Wenn Kundendateien vorhanden sind, werden sie geladen und an das Array Kunde[] im Hauptprogramm zurückgegegben.
-  public String[] laden(){ 
+  public static String[] laden(){ 
     String kundenArray[] = new String[1000];
     kundenArray[0] = "Null";
+    
     FileReader fr;
     BufferedReader br;
+    
     boolean check = false;
-    int id = 1;
+    
+    int idInt = 1;
+    String id = Integer.toString(idInt);
     int counter = 1;
+    
     File file;
     String pfad = ("C:\\projects\\Flugzeugverwaltung\\Kunden\\" + id + ".txt");
     file = new File(pfad);
+    
     while (file.isFile()) { 
       pfad = ("C:\\projects\\Flugzeugverwaltung\\Kunden\\" + id + ".txt");
       file = new File(pfad);
@@ -62,29 +69,32 @@ public class RWData {
           kundenArray[counter] = zeile; 
         }
         fr.close();
+        br.close();
       }
       catch (IOException e){
-        System.out.println("Kundendaten wurden geladen! Neuer Kunde bekommt ID: " + id);
+        System.out.println("Kundendaten wurden geladen!\n");
       }
-      id++;
+      idInt++;
+      id = Integer.toString(idInt);
     }
     
     int groesse = 1;
-    while (check) { 
-      for (int i = 1;i > 1000 ;i++ ) {
+    while (!check) { 
+      for (int i = 1;i < 1000 ;i++ ) {
         if (kundenArray[i] != null) {
           groesse++; 
         } 
         else {
           check = true;
-          i = 1000;
+          //i = 1000;
+          break;
         } 
       } 
     } 
     String neuArray[] = new String[groesse];
     neuArray[0] = "Null";
     
-    for (int i = 1; i > neuArray.length ;i++ ) {
+    for (int i = 1; i < neuArray.length ;i++ ) {
       neuArray[i] = kundenArray[i];
     } 
     return neuArray;

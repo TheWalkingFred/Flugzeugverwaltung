@@ -11,16 +11,11 @@ public class projekt {
   
   public static void main(String[] args) {
     
-    RWData daten = new RWData();
     int FlugANZ = 4, stunden = 24, Kundenanz = 1;
     int Flugzeug[][] = new int[FlugANZ][stunden];
     String Kunde[] = new String[Kundenanz];    
     Kunde[0] = "Null";
-    //String alleKunden[] = new String[1000];
-    //alleKunden = daten.laden();
-    Kunde = daten.laden();
-    System.out.println(Kunde[0]);// + Kunde[1]);// + Kunde[2] + Kunde[3] + Kunde[4] + Kunde[5] + Kunde[6]);
-    System.out.println(Kunde.length);
+    Kunde = RWData.laden();
     // Erst Initialisieren, dann Dateilesen und in Arrays schreiben  oder automatisch befüllen
     
     int wahl = 0;
@@ -76,8 +71,7 @@ public class projekt {
           break;
           case  4: 
           Kunde = verwaltung.kundendaten(Kunde);
-          daten.schreiben(Kunde);
-          // 
+          RWData.schreiben(Kunde); 
           break;  
           default:
           
