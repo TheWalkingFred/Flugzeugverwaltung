@@ -15,9 +15,9 @@ public class verwaltung {
     int neuvor = kundemodul.length - 2, neunach = kundemodul.length - 1;
     
     System.out.println("Kunde:");
-    System.out.print("Vorname:");
+    System.out.print("\nVorname: ");
     vorname = Tastatur.liesString();
-    System.out.print("Familienname");  
+    System.out.print("Familienname: ");  
     nachname = Tastatur.liesString();
     for (int i = 1 ;i < kunde.length ;i = i + 2 ) {
       kundemodul[i] = kunde[i];

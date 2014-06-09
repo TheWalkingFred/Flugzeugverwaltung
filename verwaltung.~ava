@@ -15,9 +15,9 @@ public class verwaltung {
     int neuvor = kundemodul.length - 2, neunach = kundemodul.length - 1;
     
     System.out.println("Kunde:");
-    System.out.print("Vorname:");
+    System.out.print("\nVorname: ");
     vorname = Tastatur.liesString();
-    System.out.print("Familienname:");  
+    System.out.print("Familienname: ");  
     nachname = Tastatur.liesString();
     for (int i = 1 ;i < kunde.length ;i = i + 2 ) {
       kundemodul[i] = kunde[i];
@@ -30,9 +30,9 @@ public class verwaltung {
     //id = suchen.id(kunde,id);
     //System.out.println(id);
     return kundemodul;
-  }
+    }
   
-  public static String welcher_kunde (String Kunde[]) {
+  public static String welcher_kunde (int Flugzeug[][], String Kunde[]) {
     int wahl = 0, id_int = 0;
     String id = "";
     String strid = "";
@@ -47,7 +47,6 @@ public class verwaltung {
         name = suchen.get_id(Kunde, id_int);
         System.out.println("Name: " + name); 
       } else {
-        System.out.printf("\nBitte neuen Kunden anlegen!\n\n");
         Kunde = verwaltung.kundendaten(Kunde);
         id_int = 0;
         id = suchen.get_id(Kunde, id_int);
@@ -57,50 +56,37 @@ public class verwaltung {
         
       } // end of if-else
       
-      break;
+        break;
       case  2:
       id_int = 1000;
       id = suchen.get_id(Kunde, id_int);
       System.out.println("ID: "+ id);
-      break;
+        break;
       default:
       
     }
     return id;  
+    }
+    
+  
+  
+  
+  /*public static int[] buchen ( int Flugzeug[][], String kunde[] ) {  
+    
+      
+  }                               
+  public static String[] buchen (Flugzeug[], Kunde[]) {
+    
+    
+    
+    
+    
   }
   
-  public static void show_flugzeuge ( int flugzeug[][]) {
-    int airplane = 0, airindex = 0;
-    int index = 0;
-    for ( airindex = 0; airindex < 4 ; airindex++ ) { 
-      
-      System.out.println("Flugzeug " + airplane + ":");
-      System.out.print("Uhrzeit: ");
-      for (index = 0; index < flugzeug[airplane].length ; index++ ) {
-        System.out.print( index + " |");
-      } // end of for
-      System.out.printf("\nBuchung: ");
-      for (index = 0; index < flugzeug[airplane].length ; index++ ) {
-        System.out.print(flugzeug[airplane][index] + " |");
-      } // end of while
-       airplane++ ;
-      
-    }
-    }
+                                         */
+  
+  public static void main(String[] args) {
     
-    public static int[][] buchen ( int flugzeug[][], String kunde[] ) {  
-      int id = 0;
-      String id_string = "";
-      id_string = verwaltung.welcher_kunde(kunde);
-      id = Integer.valueOf(id_string);
-      show_flugzeuge(flugzeug);
-      
-      return flugzeug;  
-    }                               
-    
-    
-    public static void main(String[] args) {
-      
-    } // end of main
-  } 
-  // end of class verwaltung
+  } // end of main
+ } 
+ // end of class verwaltung

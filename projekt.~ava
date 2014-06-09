@@ -11,20 +11,22 @@ public class projekt {
   
   public static void main(String[] args) {
     
-    
-    
+    RWData daten = new RWData();
     int FlugANZ = 4, stunden = 24, Kundenanz = 1;
     int Flugzeug[][] = new int[FlugANZ][stunden];
-    String Kunde[] = new String[Kundenanz];
+    String Kunde[] = new String[Kundenanz];    
     Kunde[0] = "Null";
+    //String alleKunden[] = new String[1000];
+    //alleKunden = daten.laden();
+    Kunde = daten.laden();
+    System.out.println(Kunde[0]);// + Kunde[1]);// + Kunde[2] + Kunde[3] + Kunde[4] + Kunde[5] + Kunde[6]);
+    System.out.println(Kunde.length);
     // Erst Initialisieren, dann Dateilesen und in Arrays schreiben  oder automatisch befüllen
     
     int wahl = 0;
     int subwahl = 0;
     String menu[] = {"Suchen", "Kundenverwaltung/ Buchung", "Statistiken"};
     do {
-      
-      
       wahl = menukontrolle.menu_end_hauptprogramm(menu);
       menukontrolle.leer();
       
@@ -48,7 +50,6 @@ public class projekt {
         } // end of switch
         break;
         
-        
         // offenes Thema
         case  2:
         String sub2[] = {"Reservierung", "Storno", "Umbuchung", "Kunde anlegen"};
@@ -61,21 +62,11 @@ public class projekt {
         
         // Storno: einfach abfrage nach wann er stornieren möchte, kundenid wird in array an der Stelle durch eine Null ersetzt
         
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
         //Umbuchung: modul abfrage, modul storno, modul reservierung
         switch (subwahl) {
           case  1:
           
-          Flugzeug = verwaltung.buchen(Flugzeug, Kunde);
+          //Flugzeug = verwaltung.buchen(Flugzeug, Kunde);
           break;
           case  2:
           //Flugzeug = verwaltung.storno(Flugzeug, Kunde);
@@ -85,12 +76,12 @@ public class projekt {
           break;
           case  4: 
           Kunde = verwaltung.kundendaten(Kunde);
+          daten.schreiben(Kunde);
           // 
           break;  
           default:
           
         }
-        
         
         break;
         
@@ -112,19 +103,12 @@ public class projekt {
         
       } // end of switch
       
-      
-      
-      
-      
     } while (wahl < menu.length); // end of do-while// end of while
     
     //Datei speichern
     
-    
-  } // end of main
-  
+  } // end of main  
 } // end of class projekt
-
 
 //modul buchen(Kunde,Flugzeug) ---> submenu zur auswahl, gibt id zurück, zwischen idsuche nach namen oder id ---->  
 
